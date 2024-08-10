@@ -3,23 +3,16 @@ package hexlet.code;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Games {
+public class Engine {
 
     private static final Scanner scn = new Scanner(System.in);
-    private static final Random rnd = new Random();
 
-    public static void oddOrEven() {
-        int score = 0;
-        String name = Cli.greetings();
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        while (score < 3) {
-            int randomInt = rnd.nextInt(10);
-            System.out.println("Question: " + randomInt);
+    public static void gameLoop(String name, String[] questions, String[] answers) {
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Question: " + questions[i]);
             System.out.print("Your answer: ");
-            String correctAnswer = randomInt % 2 == 0 ? "yes" : "no";
             String userAnswer = scn.nextLine();
-            if (userAnswer.equals(correctAnswer)) {
-                score++;
+            if (userAnswer.equals(answers[i])) {
                 System.out.println("Correct!");
             } else {
                 StringBuilder sb = new StringBuilder();
@@ -27,11 +20,11 @@ public class Games {
                         .append("'")
                         .append(userAnswer)
                         .append("' is wrong answer ;(. Correct answer was '")
-                        .append(correctAnswer)
+                        .append(answers[i])
                         .append("'.");
                 System.out.println(sb);
                 System.out.println("Let's try again, " + name + "!");
-                score = 0;
+                return;
             }
         }
         System.out.println("Congratulations, " + name + "!");
