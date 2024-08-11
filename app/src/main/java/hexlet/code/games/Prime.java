@@ -17,7 +17,7 @@ public class Prime {
         String[] answers = new String[3];
 
         for (int i = 0; i < 3; i++) {
-            int randomInt = rnd.nextInt(100);
+            int randomInt = rnd.nextInt(100) + 1;
             questions[i] = String.valueOf(randomInt);
             answers[i] = isPrime(randomInt) ? "yes" : "no";
         }
@@ -26,6 +26,9 @@ public class Prime {
     }
 
     private static boolean isPrime(int number) {
+        if (number == 1) {
+            return false;
+        }
         for (int i = 2; i < number; i++) {
             if((number % i) == 0)
             {
