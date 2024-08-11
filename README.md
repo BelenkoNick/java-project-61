@@ -6,3 +6,4 @@
 ![calculator.png](app/src/main/resources/calculator.png)
 ![gcd.png](app/src/main/resources/gcd.png)
 ![progression.png](app/src/main/resources/progression.png)
+![prime.png](app/src/main/resources/prime.png)
