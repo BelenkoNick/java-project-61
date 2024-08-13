@@ -1,6 +1,5 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
@@ -8,18 +7,13 @@ import java.util.Random;
 public class Progression {
 
     private static final Random RANDOM = new Random();
-    private static final int ITERATION_COUNT = 3;
     private static final int LENGTH_BOUND = 5;
     private static final int BOUND = 10;
 
     public static void start() {
-        String name = Cli.greetings();
-        System.out.println("What number is missing in the progression?");
+        String[][] questionsAndAnswers = new String[Engine.ITERATION_COUNT][2];
 
-        String[] questions = new String[ITERATION_COUNT];
-        String[] answers = new String[ITERATION_COUNT];
-
-        for (int i = 0; i < ITERATION_COUNT; i++) {
+        for (int i = 0; i < Engine.ITERATION_COUNT; i++) {
             int length = RANDOM.nextInt(LENGTH_BOUND) + LENGTH_BOUND;
             int start = RANDOM.nextInt(BOUND);
             int increment = RANDOM.nextInt(BOUND) + 1;
@@ -30,15 +24,15 @@ public class Progression {
                 if (j == missingIndex) {
                     sb.append("..");
                     sb.append(" ");
-                    answers[i] = String.valueOf(start);
+                    questionsAndAnswers[i][1] = String.valueOf(start);
                 } else {
                     sb.append(start);
                     sb.append(" ");
                 }
             }
-            questions[i] = sb.toString();
+            questionsAndAnswers[i][0] = sb.toString();
         }
 
-        Engine.gameLoop(name, questions, answers);
+        Engine.startGameLoop("What number is missing in the progression?", questionsAndAnswers);
     }
 }

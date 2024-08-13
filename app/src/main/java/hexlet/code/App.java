@@ -19,10 +19,10 @@ public class App {
     private static final int PRIME = 6;
 
     public static void main(String[] args) {
-        gamesChoice();
+        chooseAndStartGame();
     }
 
-    public static void gamesChoice() {
+    public static void chooseAndStartGame() {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");

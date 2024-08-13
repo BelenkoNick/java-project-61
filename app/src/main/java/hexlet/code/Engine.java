@@ -5,14 +5,17 @@ import java.util.Scanner;
 public class Engine {
 
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final int ITERATION_COUNT = 3;
+    public static final int ITERATION_COUNT = 3;
 
-    public static void gameLoop(String name, String[] questions, String[] answers) {
+    public static void startGameLoop(String rules, String[][] questions) {
+        String name = Cli.greetings();
+        System.out.println(rules);
+
         for (int i = 0; i < ITERATION_COUNT; i++) {
-            System.out.println("Question: " + questions[i]);
+            System.out.println("Question: " + questions[i][0]);
             System.out.print("Your answer: ");
             String userAnswer = SCANNER.nextLine();
-            if (userAnswer.equals(answers[i])) {
+            if (userAnswer.equals(questions[i][1])) {
                 System.out.println("Correct!");
             } else {
                 StringBuilder sb = new StringBuilder();
@@ -20,7 +23,7 @@ public class Engine {
                         .append("'")
                         .append(userAnswer)
                         .append("' is wrong answer ;(. Correct answer was '")
-                        .append(answers[i])
+                        .append(questions[i][1])
                         .append("'.");
                 System.out.println(sb);
                 System.out.println("Let's try again, " + name + "!");
