@@ -17,6 +17,7 @@ public class App {
     private static final int GCD = 4;
     private static final int PROGRESSION = 5;
     private static final int PRIME = 6;
+    private static final int EXIT = 0;
 
     public static void main(String[] args) {
         chooseAndStartGame();
@@ -39,8 +40,8 @@ public class App {
             case GCD -> GreatestCommonDivider.start();
             case PROGRESSION -> Progression.start();
             case PRIME -> Prime.start();
-            default -> {
-            }
+            case EXIT -> { }
+            default -> System.out.println("Unknown command");
         }
     }
 }

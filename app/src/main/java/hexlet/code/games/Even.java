@@ -7,6 +7,7 @@ import java.util.Random;
 public class Even {
 
     private static final Random RANDOM = new Random();
+    private static final String RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     private static final int BOUND = 10;
 
     public static void start() {
@@ -18,6 +19,6 @@ public class Even {
             questionsAndAnswers[i][1] = randomInt % 2 == 0 ? "yes" : "no";
         }
 
-        Engine.startGameLoop("Answer 'yes' if the number is even, otherwise answer 'no'.", questionsAndAnswers);
+        Engine.startGameLoop(RULES, questionsAndAnswers);
     }
 }

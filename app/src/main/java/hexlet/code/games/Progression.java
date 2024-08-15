@@ -7,6 +7,7 @@ import java.util.Random;
 public class Progression {
 
     private static final Random RANDOM = new Random();
+    private static final String RULES = "What number is missing in the progression?";
     private static final int LENGTH_BOUND = 5;
     private static final int BOUND = 10;
 
@@ -33,6 +34,6 @@ public class Progression {
             questionsAndAnswers[i][0] = sb.toString();
         }
 
-        Engine.startGameLoop("What number is missing in the progression?", questionsAndAnswers);
+        Engine.startGameLoop(RULES, questionsAndAnswers);
     }
 }

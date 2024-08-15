@@ -8,7 +8,11 @@ public class Engine {
     public static final int ITERATION_COUNT = 3;
 
     public static void startGameLoop(String rules, String[][] questions) {
-        String name = Cli.greetings();
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        String name = SCANNER.nextLine();
+        System.out.println("Hello, " + name + "!");
+
         System.out.println(rules);
 
         for (int i = 0; i < ITERATION_COUNT; i++) {

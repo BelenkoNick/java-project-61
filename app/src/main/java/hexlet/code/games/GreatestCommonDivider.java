@@ -7,6 +7,7 @@ import java.util.Random;
 public class GreatestCommonDivider {
 
     private static final Random RANDOM = new Random();
+    private static final String RULES = "Find the greatest common divisor of given numbers.";
     private static final int BOUND = 100;
 
     public static void start() {
@@ -19,7 +20,7 @@ public class GreatestCommonDivider {
             questionsAndAnswers[i][1] = String.valueOf(findGcd(a, b));
         }
 
-        Engine.startGameLoop("Find the greatest common divisor of given numbers.", questionsAndAnswers);
+        Engine.startGameLoop(RULES, questionsAndAnswers);
     }
 
     private static int findGcd(int n1, int n2) {
