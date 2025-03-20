@@ -1,9 +1,8 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/BelenkoNick/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/BelenkoNick/java-project-61/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/eee1711120a01b54c322/maintainability)](https://codeclimate.com/github/BelenkoNick/java-project-61/maintainability)
+[![Actions Status](https://github.com/Asya-67/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Asya-67/java-project-61/actions)
+[![Maintability](https://api.codeclimate.com/v1/badges/3be770d53ee6df288ece/maintainability)](https://codeclimate.com/github/Asya-67/java-project-61/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3be770d53ee6df288ece/test_coverage)](https://codeclimate.com/github/Asya-67/java-project-61/test_coverage)
 
-![even.png](app/src/main/resources/even.png)
-![calculator.png](app/src/main/resources/calculator.png)
-![gcd.png](app/src/main/resources/gcd.png)
-![progression.png](app/src/main/resources/progression.png)
-![prime.png](app/src/main/resources/prime.png)
+
+# Пример запуска игры
+[![Пример запуска игры 3](https://asciinema.org/a/NnLx1hOEMtg2ZbOyRyPre4h7q)

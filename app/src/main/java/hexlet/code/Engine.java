@@ -1,39 +1,38 @@
 package hexlet.code;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Engine {
+    private static final int ROUNDS_TO_WIN = 3;
+    private static final String GREETING = "Welcome to the Brain Games!";
+    private static final String CONGRATULATIONS = "Congratulations, ";
+    private static final String CORRECT = "Correct!";
+    private static final String WRONG_ANSWER = "'%s' is wrong answer ;(. Correct answer was '%s'.";
+    private static final String TRY_AGAIN = "Let's try again, ";
 
-    private static final Scanner SCANNER = new Scanner(System.in);
-    public static final int ITERATION_COUNT = 3;
-
-    public static void startGameLoop(String rules, String[][] questions) {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String name = SCANNER.nextLine();
+    public static void start(String gameTitle, String name, GameLogic gameLogic) {
+        System.out.println(GREETING);
+        System.out.println("Welcome to the " + gameTitle + "!");
         System.out.println("Hello, " + name + "!");
-
-        System.out.println(rules);
-
-        for (int i = 0; i < ITERATION_COUNT; i++) {
-            System.out.println("Question: " + questions[i][0]);
+        String correctAnswer;
+        int correctAnswers = 0;
+        while (correctAnswers < ROUNDS_TO_WIN) {
+            String question = gameLogic.getQuestion();
+            correctAnswer = gameLogic.getCorrectAnswer();
+            System.out.println("Question: " + question);
             System.out.print("Your answer: ");
-            String userAnswer = SCANNER.nextLine();
-            if (userAnswer.equals(questions[i][1])) {
-                System.out.println("Correct!");
+            Scanner scanner = new Scanner(System.in);
+            String userAnswer = scanner.nextLine().trim().toLowerCase(Locale.ROOT);
+            if (userAnswer.equals(correctAnswer)) {
+                System.out.println(CORRECT);
+                correctAnswers++;
             } else {
-                StringBuilder sb = new StringBuilder();
-                sb
-                        .append("'")
-                        .append(userAnswer)
-                        .append("' is wrong answer ;(. Correct answer was '")
-                        .append(questions[i][1])
-                        .append("'.");
-                System.out.println(sb);
-                System.out.println("Let's try again, " + name + "!");
+                System.out.printf((WRONG_ANSWER) + "%n", userAnswer, correctAnswer);
+                System.out.println(TRY_AGAIN + name + "!");
                 return;
             }
         }
-        System.out.println("Congratulations, " + name + "!");
+        System.out.println(CONGRATULATIONS + name + "!");
     }
 }

@@ -1,39 +1,45 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.GameLogic;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Progression {
-
-    private static final Random RANDOM = new Random();
-    private static final String RULES = "What number is missing in the progression?";
-    private static final int LENGTH_BOUND = 5;
-    private static final int BOUND = 10;
-
     public static void start() {
-        String[][] questionsAndAnswers = new String[Engine.ITERATION_COUNT][2];
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("May I have your name? ");
+        String name = scanner.nextLine();
+        System.out.println("What number is missing in the progression?");
+        Engine.start("Progression Game", name, new GameLogic() {
+            private final Random random = new Random();
+            private int hiddenValue;
 
-        for (int i = 0; i < Engine.ITERATION_COUNT; i++) {
-            int length = RANDOM.nextInt(LENGTH_BOUND) + LENGTH_BOUND;
-            int start = RANDOM.nextInt(BOUND);
-            int increment = RANDOM.nextInt(BOUND) + 1;
-            int missingIndex = RANDOM.nextInt(length - 1);
-            StringBuilder sb = new StringBuilder();
-            for (int j = 0; j < length; j++) {
-                start += increment;
-                if (j == missingIndex) {
-                    sb.append("..");
-                    sb.append(" ");
-                    questionsAndAnswers[i][1] = String.valueOf(start);
-                } else {
-                    sb.append(start);
-                    sb.append(" ");
+            @Override
+            public String getQuestion() {
+                int length = random.nextInt(6) + 5;
+                int start = random.nextInt(20) + 1;
+                int difference = random.nextInt(10) + 1;
+                StringBuilder progression = new StringBuilder();
+                int hiddenIndex = random.nextInt(length);
+                for (int i = 0; i < length; i++) {
+                    if (i == hiddenIndex) {
+                        hiddenValue = start + i * difference;
+                        progression.append(".. ");
+                    } else {
+                        progression
+                                .append(start + i * difference)
+                                .append(" "); // Добавляем текущее значение прогрессии
+                    }
                 }
+                return progression.toString().trim();
             }
-            questionsAndAnswers[i][0] = sb.toString();
-        }
 
-        Engine.startGameLoop(RULES, questionsAndAnswers);
+            @Override
+            public String getCorrectAnswer() {
+                return String.valueOf(hiddenValue);
+            }
+        });
     }
 }
